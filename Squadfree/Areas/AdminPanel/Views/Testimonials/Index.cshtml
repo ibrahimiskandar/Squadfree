@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Squadfree.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+
+
+
+<div class="bg-light rounded h-100 p-4">
+    <h6 class="mb-4">Bordered Table</h6>
+
+    <a class="btn btn-success " asp-action="Create">Create New</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Avatar)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+                <th  scope="col">
+                    Actions
+                </th>
+        </thead>
+        <tbody>
+            @foreach (var testimonial in Model)
+            {
+                <tr>
+                    <th scope="row">@(count++)</th>
+                    <td>
+                        <img style="width:130px;border-radius:15px" src="~/img/testimonials/@testimonial.Avatar" alt="this is avatar" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => testimonial.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => testimonial.Role)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning " asp-action="Edit" asp-route-id="@testimonial.Id">Edit</a>
+                        <a class="btn btn-primary " asp-action="Details" asp-route-id="@testimonial.Id">Details</a>
+                        <a class="btn btn-danger " asp-action="Delete" asp-route-id="@testimonial.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
